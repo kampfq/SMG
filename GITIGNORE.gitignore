@@ -2,3 +2,5 @@ config/*
 logging/*
 *.pyc
 update.spec
+__pycache__
+.idea
