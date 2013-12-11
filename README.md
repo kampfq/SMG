@@ -3,8 +3,7 @@ Written in python 3.3 32-bit.
 Installation and packaging
 --------------------------
 Will attempt to freeze app with cx_freeze, if it fails, I'll look for more options.
-Read more about freezing applications on www.pyinstaller.org
-Obviously needs python 2.7.3 32-bit installed.
+
 
 Requirements
 ------------
