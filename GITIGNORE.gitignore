@@ -1,0 +1,4 @@
+config/*
+logging/*
+*.pyc
+update.spec

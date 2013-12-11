@@ -1,0 +1,74 @@
+You can add your own programs using this file.
+It's not too hard, watch the video (INSERT LINK HERE) http://obsproject.com/forum/viewtopic.php?f=22&t=4223 For a better explanation.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+========================================================================================READ THIS PLEASE=============================================================================================================
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ --------------------------------------------------------------------------
+
+/--- C'est tres importante - is important - belangrijk - Read this text ---\
+Unless you have experience with JSON, it's not a great idea to start messing around in music_players.json.
+Even then, read the parameters down below. Making mistakes in the file will make smg behave very strangely.
+Watch out for: a space too much, incorrect json notation, forgetting brackets for lists,
+ forgetting required parameters, incorrect capitalisation, spelling errors and probably a lot more.
+if you (think) you messed up too hard, you can simply remove music_players.json and it will be replaced with the default file the moment you start smg.
+\--- C'est tres importante - is important - belangrijk - Read this text ---/
+ --------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+========================================================================================EXAMPLE FOR A MUSIC APPLICATION JSON NOTATION================================================================================
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+A music player is as follows:
+"NAME": {
+    "name": "music_player_name",
+    "apptype": pick between either "music_player" or "web_music_player",
+    "identifiers": ["Fictional super music player v3.02"],
+    "window_class_name": "QWidget",
+    "replace_title": True,
+    "remove_characters": ["playing", "paused"]
+}
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+========================================================================================MUSIC APPLICATION PARAMETERS=================================================================================================
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+We have three different kinds of parameters.
+First is a string, it's just text with double quotation marks around them. "". ex: "apple", "something", "music".
+Second is a boolean, it can be either False or True. (NOTE THE CAPITALISATION)
+Last is a list, it contains multiple strings between brackets, each string is delimited by a comma.
+ Ex: ["first_string", "second_string", "nobody likes apples anymore"]
+
+
+An application has the following parameters:
+
+required:
+REQUIRED string: name, this is the name that will be shown in the SMG selection box.
+
+REQUIRED string: apptype, this is what kind of application we're working with. It can be either "music_player" or "web_music_player". A music player is anything that runs on your desktop
+ a web music player is anything that runs in your browser.
+
+REQUIRED list: identifiers, if SMG finds the identifier in the title of any program, it will take that program's title and uses it to find the song.
+ It has to start with brackets [], you can have as many strings in there as you think you need.
+
+
+Optional:
+OPTIONAL string: window_class_name, this is a little more advanced, and it makes sure that if SMG finds multiple windows with your identifier(s) in it, it will only pick the correct one.
+ See video for a more detailed explanation.
+If your self added application behaves oddly, it's probably because there's no window class. You can find the window class with a spy tool such as AutoIt3 Window Spy. 
+Note that this is how I personally add new music players, it takes some time to find the window class name, and sometimes you can't find it at all (or there is none at all).
+ From no AutoIt3 knowledge to finding this (including installing, finding the spy tool, and then figuring out how to use it (it's really simple)) will take a few hours depending on how good you are with computers.
+ If you aren't good with computers, I heavily recommend trying to skip this
+DEFAULTS TO nothing. It will accept any window class name.
+
+OPTIONAL boolean: replace_title, this is either True or False (watch capitalisation). If it's True, it will remove any found identifiers in the title. 
+ example: title = "Spotify - some song by some band" 
+          identifier = "Spotify - "
+          if set to True the result will be: "some song by some band" 
+          if set to False, the result will be: "Spotify - some song by some band"
+DEFAULTS TO True.
+
+OPTIONAL list: remove_characters, everything in this list will be removed from the title, if it is found. Note that this is NOT an identifier, it will simply always remove everything in this list.
+ example: Youtube has a ▶ (should look like an arrow token >) in front of its title when a video is playing, it's not there if it's paused. 
+          remove_characters: ["▶ "] will remove that from the title if it is found.
+DEFAULTS TO [], an emtpy list, it won't do anything.
