@@ -230,7 +230,8 @@ class ProgramToken:
             try:
                 identifier = ' - Spotify'.decode('utf-8')
                 if identifier in title:
-                    title = title.replace(identifier, '')
+                    title = title.replace(identifier, ' ')
+                    title = title.replace('?', ' ')
                     return title
                 return False
             except Exception, e:
