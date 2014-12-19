@@ -226,6 +226,17 @@ class ProgramToken:
                 logging.exception(e)
 
         @staticmethod
+        def spotifyweb(title):
+            try:
+                identifier = 'Spotify - '.decode('utf-8')
+                if identifier in title:
+                    title = title.replace(identifier, '')
+                    return title
+                return False
+            except Exception, e:
+                logging.exception(e)
+
+        @staticmethod
         def grooveshark(title):
             try:
                 identifier = 'Grooveshark - '.decode('utf-8')
@@ -418,7 +429,8 @@ class ProgramToken:
         'plug': Webapp.plug,
         'zaycev': Webapp.zaycev,
         '8tracks': Webapp.eighttracks,
-        'rdio': Webapp.rdio
+        'rdio': Webapp.rdio,
+        'spotifyweb': Webapp.spotifyweb
     }
 
     MiscFunctions = {
