@@ -228,7 +228,7 @@ class ProgramToken:
         @staticmethod
         def spotifyweb(title):
             try:
-                identifier = 'Spotify - '.decode('utf-8')
+                identifier = ' - Spotify'.decode('utf-8')
                 if identifier in title:
                     title = title.replace(identifier, '')
                     return title
