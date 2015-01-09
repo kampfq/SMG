@@ -23,6 +23,7 @@ ITEMS = {
     'winamp': 'winamp',
     'vlc media player': 'vlc',
     'spotify': 'spotify',
+    'spotifyweb *': 'spotifyweb',
     'grooveshark': 'grooveshark',
     'youtube': 'youtube',
     'soundcloud': 'soundcloud',

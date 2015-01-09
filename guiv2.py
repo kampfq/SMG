@@ -19,7 +19,6 @@ import pythoncom
 import sys
 import os
 
-
 class Misc(object):
 
     """ Contains strings to use in the gui """
@@ -179,55 +178,6 @@ class UiMain(QMainWindow):
             Constants.OPTIONS['splitText'] = False
         elif event == 2:
             Constants.OPTIONS['splitText'] = True
-
-    def update(self):
-        """ Checks a webpage for current version, compares this to built-in
-        current versions, and shows update dialog if necessary
-        """
-        try:
-            ver = urlopen('http://league-insanity.tk/Azeirah_content/version')\
-                .read()
-        except IOError:
-            # if for some reason it couldn't retrieve the version, set it to
-            # automatically ignore the update: False
-            ver = False
-        if not float(VERSION) >= float(ver):
-            self.popup = QDialog(self)
-            self.popup.setModal(True)
-            self.popup.setGeometry(200, 100, 500, 100)
-            self.popup.show()
-
-            self.popup_text = QLabel(self.popup)
-            self.popup_text.setGeometry(5, 5, 500, 30)
-            self.popup_text.setOpenExternalLinks(True)
-            self.popup_text.show()
-            self.popup_text.setText(
-                """There is an update available. Run update.exe or <a href='https://sourceforge.net/projects/obsmusicstreamd'>download the update manually</a>""")
-            # reply = QMessageBox.question(Constants.UI, 'Message',
-            #                              "Do you want to update?", QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
-            # if reply == QMessageBox.Yes:
-            #     import atexit
-            #     import subprocess
-
-            #     def runUpdater():
-            #         import time
-            #         time.sleep(3)
-            #         subprocess.Popen(resource_path('update.exe'))
-            #     atexit.register(runUpdater)
-            #     sys.exit()
-
-            #     Constants.update_dialog = QWidget()
-            #     Constants.update_dialog.resize(350, 100)
-            #     Constants.update_dialog.setWindowIcon(QIcon(resource_path\
-            #         ('icon.png')))
-            #     Constants.update_dialog.setWindowTitle('Updater')
-            #     Constants.update_dialog_lbl = QLabel(Constants.update_dialog)
-            #     Constants.update_dialog_lbl.setGeometry(10, 40, 340, 12)
-            #     Constants.update_dialog.show()
-
-            #     updateThread = Thread(target = update.update)
-            #     updateThread.setName('updateThread')
-            #     updateThread.start()
 
     def tab_music_players(self):
         """ Everything inside the Music players tab gets created here."""
