@@ -229,9 +229,14 @@ class ProgramToken:
         def spotifyweb(title):
             try:
                 identifier = ' - Spotify'.decode('utf-8')
+                play = '?'.decode('utf-8')
                 if identifier in title:
-                    title = title.replace(identifier, ' ')
-                    title = title.replace('?', ' ')
+                    title = title.replace(identifier, '')
+                    if play in title:
+                        title = title.replace('?', '')
+                        title = "-".join(title.split(' - ')[::-1])
+                    else:
+                        title = "- ".join(title.split(' - ')[::-1])
                     return title
                 return False
             except Exception, e:
